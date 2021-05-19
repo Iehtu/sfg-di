@@ -9,6 +9,7 @@ import ru.iehtu.sfgdi.controllers.I18nController;
 import ru.iehtu.sfgdi.controllers.MyController;
 import ru.iehtu.sfgdi.controllers.PropertyInjectorController;
 import ru.iehtu.sfgdi.controllers.SetterInjectedController;
+import ru.iehtu.sfgdi.services.LifeCycleDemoBean;
 
 @SpringBootApplication
 public class SfgDiApplication {
@@ -16,6 +17,8 @@ public class SfgDiApplication {
 	public static void main(String[] args) {
 		// SpringApplication.run(SfgDiApplication.class, args);
 		ApplicationContext ctx = SpringApplication.run(SfgDiApplication.class, args);
+
+		LifeCycleDemoBean bean = ctx.getBean(LifeCycleDemoBean.class);
 
 		I18nController i18nController = (I18nController)ctx.getBean("i18nController");
 		System.out.println(i18nController.sayHello());
