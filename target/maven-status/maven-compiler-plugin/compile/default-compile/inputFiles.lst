@@ -16,5 +16,6 @@
 /home/iehtu/javaProjects/sfg-di/src/main/java/ru/iehtu/sfgdi/services/ConstructorGreetingService.java
 /home/iehtu/javaProjects/sfg-di/src/main/java/ru/iehtu/sfgdi/services/SetterGreetingService.java
 /home/iehtu/javaProjects/sfg-di/src/main/java/ru/iehtu/sfgdi/SfgDiApplication.java
+/home/iehtu/javaProjects/sfg-di/src/main/java/ru/iehtu/sfgdi/config/GreetingServiceConfig.java
 /home/iehtu/javaProjects/sfg-di/src/main/java/ru/iehtu/sfgdi/controllers/MyController.java
 /home/iehtu/javaProjects/sfg-di/src/main/java/ru/iehtu/pets/PetService.java
