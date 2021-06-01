@@ -3,7 +3,9 @@ package ru.iehtu.sfgdi;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 
+import ru.iehtu.pets.PetController;
 import ru.iehtu.sfgdi.controllers.ConstructorInjectedController;
 import ru.iehtu.sfgdi.controllers.I18nController;
 import ru.iehtu.sfgdi.controllers.MyController;
@@ -11,6 +13,8 @@ import ru.iehtu.sfgdi.controllers.PropertyInjectorController;
 import ru.iehtu.sfgdi.controllers.SetterInjectedController;
 import ru.iehtu.sfgdi.services.LifeCycleDemoBean;
 
+
+@ComponentScan(basePackages={"ru.iehtu.sfgdi","ru.iehtu.pets"})
 @SpringBootApplication
 public class SfgDiApplication {
 
@@ -38,6 +42,8 @@ public class SfgDiApplication {
 		ConstructorInjectedController constructorInjectedController = (ConstructorInjectedController)ctx.getBean("constructorInjectedController");
 		System.out.println(constructorInjectedController.getGreeting());
 
+		PetController petController = (PetController)ctx.getBean("petController");
+		System.out.println(petController.petName());
 	}
 
 }
