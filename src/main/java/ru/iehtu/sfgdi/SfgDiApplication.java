@@ -5,6 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
+import ru.iehtu.sfgdi.config.SfgConfiguration;
+import ru.iehtu.sfgdi.config.SfgConstructorConfig;
 // import ru.iehtu.pets.PetController;
 import ru.iehtu.sfgdi.controllers.ConstructorInjectedController;
 import ru.iehtu.sfgdi.controllers.I18nController;
@@ -62,11 +64,24 @@ public class SfgDiApplication {
 		PrototypeBean prototypeBean2 = ctx.getBean(PrototypeBean.class);
 		System.out.println(prototypeBean2.getMyScope());
 
+		System.out.println("---------------- Fake Datasource Props");
 		FakeDataSource fakeDataSource = ctx.getBean(FakeDataSource.class);
 		System.out.println(fakeDataSource.getUsername());
 		System.out.println(fakeDataSource.getPassword());
 		System.out.println(fakeDataSource.getJdbcurl());
 
+		System.out.println("---------------- Config Props Bean");
+		SfgConfiguration sfgConfiguration = ctx.getBean(SfgConfiguration.class);
+		System.out.println(sfgConfiguration.getUsername());
+		System.out.println(sfgConfiguration.getPassword());
+		System.out.println(sfgConfiguration.getJdbcurl());
+
+		System.out.println("---------------- Constructor Props Bean");
+		SfgConstructorConfig constructorConfig = ctx.getBean(SfgConstructorConfig.class);
+		System.out.println(constructorConfig.getUsername());
+		System.out.println(constructorConfig.getPassword());
+		System.out.println(constructorConfig.getJdbcurl());
+		
 	}
 
 }
