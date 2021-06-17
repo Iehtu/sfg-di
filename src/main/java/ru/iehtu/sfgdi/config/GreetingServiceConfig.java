@@ -1,13 +1,16 @@
 package ru.iehtu.sfgdi.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
+import org.springframework.context.annotation.PropertySource;
 
 import ru.iehtu.pets.PetService;
 import ru.iehtu.pets.PetServiceFactory;
+import ru.iehtu.sfgdi.datasource.FakeDataSource;
 import ru.iehtu.sfgdi.repositories.EnglishGreetingRepository;
 import ru.iehtu.sfgdi.repositories.EnglishGreetingRepositoryImpl;
 import ru.iehtu.sfgdi.services.ConstructorGreetingService;
@@ -17,11 +20,27 @@ import ru.iehtu.sfgdi.services.PrimaryGreetingService;
 import ru.iehtu.sfgdi.services.PropertyGreetingService;
 import ru.iehtu.sfgdi.services.SetterGreetingService;
 
+
+// @PropertySource("classpath:datasource.properties")
 @ImportResource("classpath:sfgdi-config.xml")
+
 @Configuration
 
 public class GreetingServiceConfig {
     
+    @Bean
+    FakeDataSource fakeDataSource(@Value("${guru.username}") String username,
+    @Value("${guru.password}") String password,
+    @Value("${guru.jdbcurl}") String jdbcurl){
+        FakeDataSource fakeDataSource = new FakeDataSource();
+        
+        fakeDataSource.setUsername(username);
+        fakeDataSource.setPassword(password);
+        fakeDataSource.setJdbcurl(jdbcurl);
+
+        return fakeDataSource;
+    }
+
     @Bean
     PetServiceFactory petServiceFactory(){
         return new PetServiceFactory();
